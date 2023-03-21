@@ -16,6 +16,4 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Invoke Lambda
-      run: |
-        DIFF=$(git diff-tree --no-commit-id --name-only -r HEAD)
-        aws lambda invoke --function-name myfunc --payload "{\"updated_files\": \"$DIFF\"}" output.json
+      run: ./invokelambda.sh
