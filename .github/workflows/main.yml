@@ -14,6 +14,5 @@ jobs:
     - name: Invoke Lambda
       uses: aws-actions/aws-cli@v1
       with:
-        args:lambda invoke --function-name rj-function --payload '{"updated_files": "$(git diff-tree --no-commit-id --name-only -r HEAD)"}' output.json
-
+        args:lambda invoke --function-name rj-function --payload "{\"updated_files\": \"$(git diff-tree --no-commit-id --name-only -r HEAD)\"}" output.json
 
