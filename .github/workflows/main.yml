@@ -16,4 +16,4 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Invoke Lambda
-      run: aws lambda invoke --function-name rj-function --payload '{"updated_files:" "'$(git diff-tree --no-commit-id --name-only -r HEAD --no-renames)'"}' output.json
+      run: aws lambda invoke --function-name rj-function --cli-binary-format raw-in-base64-out --payload '{"updated_files:" "'$(git diff-tree --no-commit-id --name-only -r HEAD --no-renames)'"}' output.json
